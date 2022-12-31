@@ -13,6 +13,7 @@ class TotsApiFootballService
     const ACTION_GET_LEAGUES = 'get_leagues';
     const ACTION_GET_TEAMS = 'get_teams';
     const ACTION_GET_STANDINGS = 'get_standings';
+    const ACTION_GET_EVENTS = 'get_events';
     /**
      *
      * @var string
@@ -132,6 +133,29 @@ class TotsApiFootballService
     {
         return $this->call(self::ACTION_GET_STANDINGS, ['league_id' => $leagueId]);
     }
+    /**
+     * More data: https://apifootball.com/documentation/#Events
+     * 
+     * @param string $leagueId
+     * @param string $from
+     * @param string $to
+     * @param string $timezone
+     * @return array
+     */
+    public function getMatches($leagueId, $from = '2023-01-01', $to = '2023-12-01', $timezone = 'America/New_York')
+    {
+        return $this->call(self::ACTION_GET_EVENTS, ['league_id' => $leagueId, 'from' => $from, 'to' => $to, 'timezone' => $timezone]);
+    }
+    /**
+     *
+     * @param string $matchId
+     * @return array
+     */
+    public function getMatchById($matchId) 
+    {
+        return $this->call(self::ACTION_GET_EVENTS, ['match_id' => $matchId]);
+    }
+    
     /**
      *
      * @param string $action
