@@ -12,6 +12,7 @@ class TotsApiFootballService
     const ACTION_GET_COUNTRIES = 'get_countries';
     const ACTION_GET_LEAGUES = 'get_leagues';
     const ACTION_GET_TEAMS = 'get_teams';
+    const ACTION_GET_STANDINGS = 'get_standings';
     /**
      *
      * @var string
@@ -82,6 +83,54 @@ class TotsApiFootballService
     public function getTeamById($teamId)
     {
         return $this->call(self::ACTION_GET_TEAMS, ['league_id' => $teamId]);
+    }
+    /**
+     *
+     * {
+     *     "country_name": "Spain",
+     *     "league_id": "302",
+     *     "league_name": "La Liga",
+     *     "team_id": "76",
+     *     "team_name": "Real Madrid",
+     *     "overall_promotion": "Promotion - Champions League (Group Stage)",
+     *     "overall_league_position": "1",
+     *     "overall_league_payed": "37",
+     *     "overall_league_W": "24",
+     *     "overall_league_D": "9",
+     *     "overall_league_L": "4",
+     *     "overall_league_GF": "65",
+     *     "overall_league_GA": "27",
+     *     "overall_league_PTS": "81",
+     *     "home_league_position": "",
+     *     "home_promotion": "",
+     *     "home_league_payed": "",
+     *     "home_league_W": "",
+     *     "home_league_D": "",
+     *     "home_league_L": "",
+     *     "home_league_GF": "",
+     *     "home_league_GA": "",
+     *     "home_league_PTS": "",
+     *     "away_league_position": "",
+     *     "away_promotion": "",
+     *     "away_league_payed": "",
+     *     "away_league_W": "",
+     *     "away_league_D": "",
+     *     "away_league_L": "",
+     *     "away_league_GF": "",
+     *     "away_league_GA": "",
+     *     "away_league_PTS": "",
+     *     "league_round": "Current",
+     *     "team_badge": "https://apiv3.apifootball.com/badges/76_real-madrid.jpg",
+     *     "fk_stage_key": "402",
+     *     "stage_name": "Current"
+     * },
+     * 
+     * @param string $leagueId
+     * @return array
+     */
+    public function getStandings($leagueId)
+    {
+        return $this->call(self::ACTION_GET_STANDINGS, ['league_id' => $leagueId]);
     }
     /**
      *
