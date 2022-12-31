@@ -76,6 +76,15 @@ class TotsApiFootballService
     }
     /**
      *
+     * @param string $teamId
+     * @return void
+     */
+    public function getTeamById($teamId)
+    {
+        return $this->call(self::ACTION_GET_TEAMS, ['league_id' => $teamId]);
+    }
+    /**
+     *
      * @param string $action
      * @param array $params
      * @return object|array
