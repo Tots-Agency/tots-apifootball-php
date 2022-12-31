@@ -10,6 +10,7 @@ class TotsApiFootballService
     const API_URL = 'https://apiv3.apifootball.com/';
 
     const ACTION_GET_COUNTRIES = 'get_countries';
+    const ACTION_GET_LEAGUES = 'get_leagues';
     /**
      *
      * @var string
@@ -21,12 +22,38 @@ class TotsApiFootballService
         $this->apiKey = $apiKey;
     }
     /**
-     *
+     *  [
+     *  {
+     *      "country_id": "44",
+     *      "country_name": "England",
+     *      "country_logo": "https://apiv3.apifootball.com/badges/logo_country/44_england.png"
+     *  },
+     *  ]
      * @return array
      */
     public function getCountries()
     {
         return $this->call(self::ACTION_GET_COUNTRIES);
+    }
+    /**
+     * [
+     * {
+     *     "country_id": "6",
+     *     "country_name": "Spain",
+     *     "league_id": "300",
+     *     "league_name": "Copa del Rey",
+     *     "league_season": "2020/2021",
+     *     "league_logo": "https://apiv3.apifootball.com/badges/logo_leagues/300_copa-del-rey.png",
+     *     "country_logo": "https://apiv3.apifootball.com/badges/logo_country/6_spain.png"
+     * },
+     * ]
+     * 
+     * @param string $countryId
+     * @return array
+     */
+    public function getLeagues($countryId = null)
+    {
+        return $this->call(self::ACTION_GET_LEAGUES, $countryId != null ? ['country_id' => $countryId] : []);
     }
     /**
      *
