@@ -11,6 +11,7 @@ class TotsApiFootballService
 
     const ACTION_GET_COUNTRIES = 'get_countries';
     const ACTION_GET_LEAGUES = 'get_leagues';
+    const ACTION_GET_TEAMS = 'get_teams';
     /**
      *
      * @var string
@@ -54,6 +55,24 @@ class TotsApiFootballService
     public function getLeagues($countryId = null)
     {
         return $this->call(self::ACTION_GET_LEAGUES, $countryId != null ? ['country_id' => $countryId] : []);
+    }
+    /**
+     * [
+     * {
+     *      "team_key": "73",
+     *      "team_name": "Atletico Madrid",
+     *      "team_badge": "https://apiv3.apifootball.com/badges/73_atl.-madrid.jpg",
+     *      "players": []
+     *      ....
+     * }
+     * ]
+     *
+     * @param string $leagueId
+     * @return array
+     */
+    public function getTeams($leagueId)
+    {
+        return $this->call(self::ACTION_GET_TEAMS, ['league_id' => $leagueId]);
     }
     /**
      *
