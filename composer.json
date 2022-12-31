@@ -1,0 +1,22 @@
+{
+    "name": "tots/apifootball-php",
+    "description": "The library for PHP",
+    "version": "0.0.1",
+    "minimum-stability": "stable",
+    "license": "MIT",
+    "authors": [{
+        "name": "Matias Camiletti",
+        "homepage": "https://tots.agency"
+    }],
+    "require": {
+        "php": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Tots\\ApiFootball\\": "src/"
+        }
+    },
+    "scripts": {
+        "serve": "php -S 0.0.0.0:8181 -t example/"
+    }
+}
