@@ -177,10 +177,9 @@ class TotsApiFootballService
         // Convert to object
         $obj = json_decode($dataString);
         // Verify error
-        if($obj->error){
+        if(is_object($obj) && $obj->error){
             return [];
         }
-        // Convert to object
         return $obj;
     }
 
