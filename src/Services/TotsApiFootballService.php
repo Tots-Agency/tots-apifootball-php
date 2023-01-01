@@ -175,7 +175,13 @@ class TotsApiFootballService
             )
         );
         // Convert to object
-        return json_decode($dataString);
+        $obj = json_decode($dataString);
+        // Verify error
+        if($obj->error){
+            return [];
+        }
+        // Convert to object
+        return $obj;
     }
 
 }
